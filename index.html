@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="materialdesignicons.min.css"><title>Marquiz</title>
 <link href="style-app.css" rel="stylesheet"></head>
+<style>
+.mdi:before, .mdi-set {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@each $key, $value in $mdi-icons {
+    .#{$mdi-css-prefix}-#{$key}:before {
+        content: char($value);
+    }
+}
+
+.#{$mdi-css-prefix}-blank:before {
+    content: "\F68C";
+    visibility: hidden;
+}
+.mdi-24px.mdi-set, .mdi-24px.mdi:before {
+    font-size: 24px;
+}
+</style>
 <body>
 <div id="app"></div>
 <script src="//marquizquiz-a.akamaihd.net/assets/7ffb7f63fdd40e39810494d8b8d51bac609b913f/static/js/manifest.2701751e0ff9c71eeebd.js"></script>
