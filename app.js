@@ -2312,6 +2312,9 @@ webpackJsonp([0], [, , , , , , , , , , , , , , , , function(t, e, s) {
         install: function(t) {
             t.axios = t.prototype.$axios = n.a.create({
                 baseURL: "https://17e62d972419277d-eu-west-1.getstatica.com"
+            }),
+            t.axiosUrl = t.prototype.$axios = n.a.create({
+                baseURL: ""
             })
         }
     }
@@ -3430,18 +3433,20 @@ webpackJsonp([0], [, , , , , , , , , , , , , , , , function(t, e, s) {
         },
         actions: {
             saveLead: function(t, e) {
-                debugger;
                 var s = t.state,
                     i = t.commit,
                     r = t.getters,
                     o = t.rootState;
                 e.contacts = s.contacts, e.clientId = s.uuid, r.getEnabledFieldsOnStep2.length || (e.extra.notify = "now");
-                var c = "/v1/answers";
+                var c = "./php/sender.php";
                 o.customAnswerEndpoint && (c = o.customAnswerEndpoint);
                 var u = new n.a(function() {});
-                return u = s.answerId ? a.a.axios.patch(c + "/" + s.answerId, e) : a.a.axios.post(c, e), u.then(function(t) {
+                console.log(e);
+                    return u = s.answerId ? a.a.axiosUrl.patch(c + "/" + s.answerId, e) : a.a.axiosUrl.post(c, e), 
+                u.then(function(t) {
                     i("setAnswerId", t.data.id)
                 }), u
+                debugger;
             }
         }
     }
